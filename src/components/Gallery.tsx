@@ -1,0 +1,205 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const Gallery = () => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const artworks = [
+    {
+      id: 1,
+      title: "Portrait Study",
+      description: "A contemplative portrait exploring light and shadow",
+      image: "/api/placeholder/400/500",
+      category: "portraits"
+    },
+    {
+      id: 2,
+      title: "Urban Landscape",
+      description: "City life captured in charcoal and graphite",
+      image: "/api/placeholder/500/400",
+      category: "landscapes"
+    },
+    {
+      id: 3,
+      title: "Cultural Heritage",
+      description: "Traditional Ethiopian motifs and patterns",
+      image: "/api/placeholder/400/600",
+      category: "cultural"
+    },
+    {
+      id: 4,
+      title: "Abstract Expression",
+      description: "Emotional interpretation through abstract forms",
+      image: "/api/placeholder/600/400",
+      category: "abstract"
+    },
+    {
+      id: 5,
+      title: "Nature Study",
+      description: "Botanical illustration in fine detail",
+      image: "/api/placeholder/400/500",
+      category: "nature"
+    },
+    {
+      id: 6,
+      title: "Character Design",
+      description: "Creative character concepts and development",
+      image: "/api/placeholder/500/600",
+      category: "characters"
+    },
+    {
+      id: 7,
+      title: "Architectural Sketch",
+      description: "Historic building study with perspective focus",
+      image: "/api/placeholder/600/400",
+      category: "architecture"
+    },
+    {
+      id: 8,
+      title: "Emotional Portrait",
+      description: "Capturing human emotion through artistic expression",
+      image: "/api/placeholder/400/500",
+      category: "portraits"
+    }
+  ];
+
+  const openLightbox = (index: number) => {
+    setSelectedImage(index);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  const nextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % artworks.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage(selectedImage === 0 ? artworks.length - 1 : selectedImage - 1);
+    }
+  };
+
+  return (
+    <section id="gallery" className="section-padding-y bg-gray-50">
+      <div className="max-w-7xl mx-auto container-padding">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Sketch Art Gallery
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Beyond my professional work in media and communication, I find creative expression 
+            through sketching and visual art. Each piece tells a story and reflects my artistic journey.
+          </p>
+        </motion.div>
+
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {artworks.map((artwork, index) => (
+            <motion.div
+              key={artwork.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group cursor-pointer"
+              onClick={() => openLightbox(index)}
+            >
+              <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div 
+                  className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
+                  style={{ backgroundImage: `url(${artwork.image})` }}
+                ></div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end">
+                  <div className="p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="font-semibold text-lg mb-1">{artwork.title}</h3>
+                    <p className="text-sm opacity-90">{artwork.description}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Personal Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              Art as Expression
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              "Art has always been my sanctuary—a space where I can explore emotions, 
+              capture moments, and express ideas that words sometimes cannot convey. 
+              Each sketch represents a moment of reflection, a story waiting to be told, 
+              or simply the joy of creating something beautiful with my own hands."
+            </p>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Lightbox */}
+      {selectedImage !== null && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl max-h-full">
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-300 z-10"
+            >
+              <X size={32} />
+            </button>
+            
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10"
+            >
+              <ChevronLeft size={32} />
+            </button>
+            
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10"
+            >
+              <ChevronRight size={32} />
+            </button>
+
+            <div className="bg-white rounded-lg overflow-hidden">
+              <img
+                src={artworks[selectedImage].image}
+                alt={artworks[selectedImage].title}
+                className="w-full h-auto max-h-[70vh] object-contain"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                  {artworks[selectedImage].title}
+                </h3>
+                <p className="text-gray-600">
+                  {artworks[selectedImage].description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Gallery;
