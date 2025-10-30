@@ -13,9 +13,9 @@ export default function Home() {
       <Navigation />
       <Hero />
       <About />
+      <Portfolio />
       <Gallery />
       <Blog />
-      <Portfolio />
       <Contact/>
       <Footer />
     </main>

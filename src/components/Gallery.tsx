@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -12,7 +13,7 @@ const Gallery = () => {
       id: 1,
       title: "Portrait Study",
       description: "A contemplative portrait exploring light and shadow",
-      image: "/api/placeholder/400/500",
+      image: "/vercel.svg",
       category: "portraits"
     },
     {
@@ -113,17 +114,17 @@ const Gallery = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
               className="group cursor-pointer"
-              onClick={() => openLightbox(index)}
+              // onClick={() => openLightbox(index)}
             >
-              <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
                 <div
-                  className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full bg-cover bg-center transition-transform duration-300"
                   style={{ backgroundImage: `url(${artwork.image})` }}
                 ></div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end">
-                  <div className="p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-black/40 flex items-end">
+                  <div className="p-4 text-white">
                     <h3 className="font-semibold text-lg mb-1">{artwork.title}</h3>
                     <p className="text-sm opacity-90">{artwork.description}</p>
                   </div>
@@ -146,10 +147,10 @@ const Gallery = () => {
               Art as Expression
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              "Art has always been my sanctuary—a space where I can explore emotions,
+              Art has always been my sanctuary—a space where I can explore emotions,
               capture moments, and express ideas that words sometimes cannot convey.
               Each sketch represents a moment of reflection, a story waiting to be told,
-              or simply the joy of creating something beautiful with my own hands."
+              or simply the joy of creating something beautiful with my own hands.
             </p>
           </div>
         </motion.div>

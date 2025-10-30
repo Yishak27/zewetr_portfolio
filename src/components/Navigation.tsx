@@ -26,9 +26,11 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-white/98 backdrop-blur-md shadow-xl border-b border-gray-100' 
-        : 'bg-white/10 backdrop-blur-sm'
+      // scrolled 
+        // ? 
+        'bg-dark/98 backdrop-blur-md shadow-xl border-b border-gray-100' 
+        // :
+        //  'bg-white/10 backdrop-blur-sm'
     }`}>
       <div className="container-responsive">
         <div className="flex justify-between items-center py-2 lg:py-3">
@@ -38,13 +40,7 @@ const Navigation = () => {
                'text-gray-900'
             }`}>
               <span className="font-serif">Zewotir </span>
-              <span className={`ml-2 text-lg lg:text-xl font-light ${
-                // scrolled ? 
-                'text-blue-900'
-                //  : 'text-amber-300'
-              }`}>
-                 Desalegn
-              </span>
+              
             </h1>
           </div>
 
