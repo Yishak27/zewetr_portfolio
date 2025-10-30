@@ -48,15 +48,14 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-1 gap-3">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-5 py-3 text-base font-medium rounded-lg transition-all duration-300 group ${
-                    scrolled 
-                      ? 'text-gray-700 hover:text-blue-900 hover:bg-blue-50' 
-                      : 'text-white hover:text-amber-300 hover:bg-white/10'
+                  className={`relative inline-block px-4 py-2 text-base font-medium rounded-lg transition-all duration-300 group ${
+                    'text-gray-700 hover:text-blue-900 hover:bg-blue-50' 
+                      // : 'text-white hover:text-amber-300 hover:bg-white/10'
                   }`}
                 >
                   {item.label}
@@ -67,8 +66,8 @@ const Navigation = () => {
               ))}
             </div>
           </div>
-
-          <div className="hidden lg:block">
+{/* 
+          <div className="hidden p-10 lg:block">
             <a
               href="#contact"
               className={`px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
@@ -77,9 +76,9 @@ const Navigation = () => {
                   : 'bg-amber-600 text-white hover:bg-amber-700'
               }`}
             >
-              Let's Connect
+              Let`s Connect
             </a>
-          </div>
+          </div> */}
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
@@ -120,7 +119,7 @@ const Navigation = () => {
                   className="block w-full text-center px-4 py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-300"
                   onClick={() => setIsOpen(false)}
                 >
-                  Let's Connect
+                  Let`s Connect
                 </a>
               </div>
             </div>

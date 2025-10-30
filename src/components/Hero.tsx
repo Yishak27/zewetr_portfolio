@@ -41,7 +41,7 @@ const Hero = () => {
               >
                 <a
                   href="#about"
-                  className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center"
+                  className="bg-blue-900 hover:bg-blue-800 text-white lg:p-10 px-8 py-4 rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center"
                 >
                   Learn More About Me
                 </a>
