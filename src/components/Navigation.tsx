@@ -87,9 +87,11 @@ const Navigation = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-lg transition-all duration-300 ${
-                scrolled 
-                  ? 'text-gray-700 hover:bg-gray-100' 
-                  : 'text-white hover:bg-white/10'
+                // scrolled 
+                  // ?
+                   'text-gray-700 hover:bg-gray-100' 
+                  // :
+                  //  'text-white hover:bg-white/10'
               }`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
