@@ -25,7 +25,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full pt-10 z-50 transition-all duration-500 ${
       scrolled 
         ? 'bg-white/98 backdrop-blur-md shadow-xl border-b border-gray-100' 
         : 'bg-white/10 backdrop-blur-sm'
@@ -33,15 +33,17 @@ const Navigation = () => {
       <div className="container-responsive">
         <div className="flex justify-between items-center py-5 lg:py-6">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <h1 className={`text-2xl lg:text-3xl font-bold transition-all duration-300 ${
-              scrolled ? 'text-gray-900' : 'text-white'
+               'text-gray-900'
             }`}>
-              <span className="font-serif">Zewotir</span>
+              <span className="font-serif">Zewotir </span>
               <span className={`ml-2 text-lg lg:text-xl font-light ${
-                scrolled ? 'text-blue-900' : 'text-amber-300'
+                // scrolled ? 
+                'text-blue-900'
+                //  : 'text-amber-300'
               }`}>
-                Desalegn
+                 Desalegn
               </span>
             </h1>
           </div>

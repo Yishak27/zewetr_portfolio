@@ -23,6 +23,8 @@ const Hero = () => {
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
                 Zewotir Desalegn Alemu
+
+               <span className="text-amber-300 text-5xl"> aka Zik</span>
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl mb-8 font-light text-blue-900">
                 PR Strategist | Media Personality | Voice-Over Artist
@@ -33,36 +35,38 @@ const Hero = () => {
                 I bring stories to life through authentic and impactful storytelling.
               </p>
               
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-4"
-              >
+              > */}
+              <div className='flex flex-col sm:flex-row gap-3'>               
                 <a
                   href="#about"
-                  className="bg-blue-900 hover:bg-blue-800 text-white lg:p-10 px-8 py-4 rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center"
+                  className="bg-blue-900 px-8 py-4 hover:bg-blue-800 text-white rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center md:p-10"
                 >
                   Learn More About Me
                 </a>
                 <a
                   href="#portfolio"
-                  className="border-2 border-blue-900 hover:bg-blue-900 hover:text-white text-blue-900 px-8 py-4 rounded-lg font-semibold transition-all duration-300 text-center"
+                  className="border-2 border-transparent hover:p-10 text-blue-900 px-8 py-4 font-semibold transition-all duration-300 text-center"
                 >
                   View My Work
                 </a>
-              </motion.div>
+                </div>
+              {/* </motion.div> */}
 
               {/* Professional Highlights */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6"
+              <div
+                // initial={{ opacity: 0, y: 20 }}
+                // animate={{ opacity: 1, y: 0 }}
+                // transition={{ duration: 0.8, delay: 0.6 }}
+                className="grid grid-cols-2 sm:grid-cols-3 gap-6"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-900">5+</div>
-                  <div className="text-sm text-gray-600">Years Experience</div>
+                  <div className="text-2xl font-bold text-blue-900">15+</div>
+                  <div className="text-sm text-gray-600">Years of Experience</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-900">100+</div>
@@ -72,7 +76,7 @@ const Hero = () => {
                   <div className="text-2xl font-bold text-blue-900">50+</div>
                   <div className="text-sm text-gray-600">Media Appearances</div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -89,7 +93,7 @@ const Hero = () => {
               
               {/* Image Container */}
               <div className="relative bg-white p-4 rounded-3xl shadow-2xl">
-                <div className="aspect-[4/5] relative overflow-hidden rounded-2xl">
+                <div className="aspect-4/5 relative overflow-hidden rounded-2xl">
                   <Image
                     src="/hero-portrait.jpg"
                     alt="Zewotir Desalegn Alemu - Professional Portrait"
@@ -100,37 +104,6 @@ const Hero = () => {
                   />
                 </div>
               </div>
-
-              {/* Floating Elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-6 -left-6 bg-white rounded-full p-4 shadow-lg"
-              >
-                <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">PR</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                className="absolute -bottom-4 -right-4 bg-white rounded-full p-4 shadow-lg"
-              >
-                <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">🎤</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
-                className="absolute top-1/2 -right-8 bg-white rounded-full p-3 shadow-lg"
-              >
-                <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">📺</span>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -140,7 +113,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block"
+          className="absolute bottom-2 left-1/2 transform -translate-x-1/2 hidden lg:block"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
