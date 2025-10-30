@@ -87,8 +87,8 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="section-padding-y bg-gray-50">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="gallery" className="section-container bg-gray-50">
+      <div className="container-responsive">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const Gallery = () => {
             Sketch Art Gallery
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Beyond my professional work in media and communication, I find creative expression 
+            Beyond my professional work in media and communication, I find creative expression
             through sketching and visual art. Each piece tells a story and reflects my artistic journey.
           </p>
         </motion.div>
@@ -118,7 +118,7 @@ const Gallery = () => {
               onClick={() => openLightbox(index)}
             >
               <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <div 
+                <div
                   className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
                   style={{ backgroundImage: `url(${artwork.image})` }}
                 ></div>
@@ -146,9 +146,9 @@ const Gallery = () => {
               Art as Expression
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              "Art has always been my sanctuary—a space where I can explore emotions, 
-              capture moments, and express ideas that words sometimes cannot convey. 
-              Each sketch represents a moment of reflection, a story waiting to be told, 
+              "Art has always been my sanctuary—a space where I can explore emotions,
+              capture moments, and express ideas that words sometimes cannot convey.
+              Each sketch represents a moment of reflection, a story waiting to be told,
               or simply the joy of creating something beautiful with my own hands."
             </p>
           </div>
@@ -165,14 +165,14 @@ const Gallery = () => {
             >
               <X size={32} />
             </button>
-            
+
             <button
               onClick={prevImage}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10"
             >
               <ChevronLeft size={32} />
             </button>
-            
+
             <button
               onClick={nextImage}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10"

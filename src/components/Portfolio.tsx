@@ -77,8 +77,8 @@ const Portfolio = () => {
     : portfolioItems.filter(item => item.category === activeCategory);
 
   return (
-    <section id="portfolio" className="section-padding-y bg-white">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="portfolio" className="section-container bg-white">
+      <div className="container-responsive">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

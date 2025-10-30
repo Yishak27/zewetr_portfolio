@@ -61,11 +61,13 @@ Update your personal details in these files:
 
 ### 2. Images & Media
 Replace placeholder images with your actual photos:
-- **Hero Background**: Add your professional photo to `/public/hero-bg.jpg`
+- **Hero Portrait**: Replace `/public/hero-portrait.jpg` with your professional portrait (recommended: 800x1000px, 4:5 aspect ratio)
 - **About Photo**: Add portrait to `/public/about-photo.jpg`
 - **Portfolio Items**: Add work samples to `/public/portfolio/`
 - **Gallery Artwork**: Add sketches to `/public/gallery/`
 - **Resume**: Replace `/public/resume.pdf` with your actual resume
+
+**Important**: The hero portrait should be a high-quality professional photo with good lighting. The current design works best with portrait-oriented images.
 
 ### 3. Portfolio Content
 Edit `src/components/Portfolio.tsx`:

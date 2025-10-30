@@ -69,16 +69,16 @@ const Blog = () => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
   };
 
   return (
-    <section id="blog" className="section-padding-y bg-white">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="blog" className="section-container bg-white">
+      <div className="container-responsive">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ const Blog = () => {
             Insights & Reflections
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Thoughts on communication strategy, media trends, and the evolving landscape 
+            Thoughts on communication strategy, media trends, and the evolving landscape
             of public relations and storytelling.
           </p>
         </motion.div>
@@ -132,7 +132,7 @@ const Blog = () => {
                 </a>
               </div>
               <div className="aspect-video lg:aspect-auto">
-                <div 
+                <div
                   className="w-full h-full bg-cover bg-center"
                   style={{ backgroundImage: `url(${blogPosts[0].image})` }}
                 ></div>
@@ -153,34 +153,34 @@ const Blog = () => {
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
             >
               <div className="aspect-video overflow-hidden">
-                <div 
+                <div
                   className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
                   style={{ backgroundImage: `url(${post.image})` }}
                 ></div>
               </div>
-              
+
               <div className="p-6">
                 <div className="mb-3">
                   <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-sm font-medium">
                     {post.category}
                   </span>
                 </div>
-                
+
                 <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-900 transition-colors duration-300">
                   {post.title}
                 </h3>
-                
+
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   {post.excerpt}
                 </p>
-                
+
                 <div className="flex items-center text-gray-500 text-sm mb-4">
                   <Calendar size={14} className="mr-2" />
                   <span className="mr-4">{formatDate(post.date)}</span>
                   <Clock size={14} className="mr-2" />
                   <span>{post.readTime}</span>
                 </div>
-                
+
                 <a
                   href={`/blog/${post.slug}`}
                   className="inline-flex items-center text-blue-900 hover:text-amber-600 font-semibold transition-colors duration-300"
@@ -206,7 +206,7 @@ const Blog = () => {
               Stay Updated
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Subscribe to receive my latest insights on communication strategy, 
+              Subscribe to receive my latest insights on communication strategy,
               media trends, and professional development directly in your inbox.
             </p>
             <form className="max-w-md mx-auto flex gap-4">

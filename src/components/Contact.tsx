@@ -67,8 +67,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding-y bg-gray-50">
-      <div className="max-w-7xl mx-auto container-padding">
+    <section id="contact" className="section-container bg-gray-50">
+      <div className="container-responsive">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
