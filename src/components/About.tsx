@@ -67,8 +67,8 @@ const About = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              // className="inline-flex items-center bg-blue-900 hover:bg-blue-800 text-white px-12 sm:px-14 py-3 rounded-full font-semibold transition-colors duration-300 shadow-lg mt-6 border-2 border-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-              className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
+              className="inline-flex items-center bg-blue-900 hover:bg-blue-800 text-white px-12 sm:px-14 py-3 rounded-full font-semibold transition-colors duration-300 shadow-lg mt-6 border-2 border-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              // className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
             // whileHover={{ scale: 1.05 }}
             // whileTap={{ scale: 0.95 }}
             >

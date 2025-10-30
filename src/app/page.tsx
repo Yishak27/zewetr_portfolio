@@ -12,8 +12,8 @@ export default function Home() {
     <main>
       <Navigation />
       <Hero />
-      <Gallery />
       <About />
+      <Gallery />
       <Blog />
       <Portfolio />
       <Contact/>

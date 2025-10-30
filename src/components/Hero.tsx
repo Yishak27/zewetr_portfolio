@@ -38,7 +38,7 @@ const Hero = () => {
               <div className='flex flex-col sm:flex-row items-center gap-5 sm:gap-9 mt-8'>               
                 <a
                   href="#about"
-                  className="inline-flex h-12 w-1/3 items-center justify-center bg-blue-900 px-12 sm:px-14 text-white rounded-full font-semibold transition-colors duration-300 shadow-lg text-center border-2 border-blue-900 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
+                  className="inline-flex h-12 w-1/3 items-center text-sm justify-center bg-blue-900 px-16 sm:px-14 text-white rounded-full font-semibold transition-colors duration-300 shadow-lg text-center border-2 border-blue-900 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   Learn More About Me
                 </a>
