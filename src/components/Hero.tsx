@@ -6,9 +6,9 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen mt-2 md:mt-4 flex items-center overflow-hidden pt-28 pb-12 sm:pb-16">
       <div className="container-responsive w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-screen">
           {/* Text Content - Left Side */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -35,16 +35,16 @@ const Hero = () => {
                 I bring stories to life through authentic and impactful storytelling.
               </p>
               
-              <div className='flex flex-col sm:flex-row gap-4 mt-8'>               
+              <div className='flex flex-col sm:flex-row items-center gap-5 sm:gap-9 mt-8'>               
                 <a
                   href="#about"
-                  className="bg-blue-900 px-8 py-4 hover:bg-blue-800 text-white rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center"
+                  className="inline-flex h-12 w-1/3 items-center justify-center bg-blue-900 px-12 sm:px-14 text-white rounded-full font-semibold transition-colors duration-300 shadow-lg text-center border-2 border-blue-900 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   Learn More About Me
                 </a>
                 <a
                   href="#portfolio"
-                  className="border-2 border-blue-900 text-blue-900 px-8 py-4 font-semibold transition-all duration-300 text-center rounded-lg"
+                  className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   View My Work
                 </a>
@@ -103,7 +103,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-2 left-1/2 transform -translate-x-1/2 hidden lg:block"
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden lg:block"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}

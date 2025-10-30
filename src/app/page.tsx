@@ -1,23 +1,15 @@
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Portfolio from '@/components/Portfolio';
 import Gallery from '@/components/Gallery';
-import Blog from '@/components/Blog';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
+import Navigation from '@/components/Navigation';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
+    <main>
+      <Navigation/>
       <Hero />
-      <About />
-      <Portfolio />
-      <Gallery />
-      <Blog />
-      <Contact />
-      <Footer />
+      <Gallery/>
+      <About/>
     </main>
   );
 }

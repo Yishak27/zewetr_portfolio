@@ -96,7 +96,7 @@ const Gallery = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl text-center lg:text-5xl font-bold text-gray-900 mb-4">
             Sketch Art Gallery
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
