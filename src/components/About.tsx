@@ -57,7 +57,7 @@ const About = () => {
                 achieving measurable impact.
               </p>
               <p>
-                Whether I'm hosting a television program, developing a PR campaign, or lending my voice 
+                Whether I`m hosting a television program, developing a PR campaign, or lending my voice 
                 to bring a script to life, my mission remains constant: to connect people, purpose, and 
                 possibility through the power of compelling communication.
               </p>
