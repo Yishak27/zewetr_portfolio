@@ -118,7 +118,7 @@ const Navigation = () => {
               <div className="mt-4 pt-4 border-t border-gray-200">
                 <a
                   href="#contact"
-                  className="block w-full text-center px-4 py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-300"
+                  className="block w-full text-center px-12 sm:px-14 py-3 bg-blue-900 text-white font-semibold rounded-full hover:bg-blue-800 transition-colors duration-300 border-2 border-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
                   onClick={() => setIsOpen(false)}
                 >
                   Let`s Connect

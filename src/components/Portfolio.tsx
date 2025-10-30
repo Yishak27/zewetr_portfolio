@@ -107,10 +107,10 @@ const Portfolio = () => {
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-12 sm:px-14 py-3 rounded-full font-semibold transition-all duration-300 border-2 ${
                 activeCategory === category.id
-                  ? 'bg-blue-900 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-blue-900 text-white shadow-lg border-blue-900'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border-gray-300'
               }`}
             >
               {category.label}
@@ -186,7 +186,7 @@ const Portfolio = () => {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-lg"
+            className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white px-12 sm:px-14 py-3 rounded-full font-semibold transition-colors duration-300 shadow-lg border-2 border-amber-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
           >
             Let's Work Together
           </a>

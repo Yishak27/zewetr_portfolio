@@ -125,7 +125,7 @@ const Blog = () => {
                 </div>
                 <a
                   href={`/blog/${blogPosts[0].slug}`}
-                  className="inline-flex items-center text-white hover:text-amber-200 font-semibold transition-colors duration-300"
+                  className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   Read Full Article
                   <ArrowRight size={20} className="ml-2" />
@@ -183,7 +183,7 @@ const Blog = () => {
 
                 <a
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-blue-900 hover:text-amber-600 font-semibold transition-colors duration-300"
+                  className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   Read More
                   <ArrowRight size={16} className="ml-2" />
@@ -217,7 +217,7 @@ const Blog = () => {
               />
               <button
                 type="submit"
-                className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300"
+                className="inline-flex h-12 w-1/3 items-center justify-center bg-blue-900 px-12 sm:px-14 text-white rounded-full font-semibold transition-colors duration-300 shadow-lg text-center border-2 border-blue-900 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
               >
                 Subscribe
               </button>
