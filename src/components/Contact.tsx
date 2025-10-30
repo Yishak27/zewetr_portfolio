@@ -76,10 +76,10 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Let's Connect
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
             Ready to collaborate on your next project? I'd love to hear from you. 
             Whether it's media hosting, voice-over work, or strategic communication, 
             let's create something remarkable together.
@@ -94,7 +94,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Send Me a Message
               </h3>
@@ -190,10 +190,10 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
             {/* Contact Details */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Get in Touch
               </h3>
@@ -226,7 +226,7 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Connect Online
               </h3>

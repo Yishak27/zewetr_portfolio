@@ -86,10 +86,10 @@ const Blog = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Insights & Reflections
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
             Thoughts on communication strategy, media trends, and the evolving landscape
             of public relations and storytelling.
           </p>
@@ -101,11 +101,11 @@ const Blog = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-12"
         >
           <div className="bg-gradient-to-r from-blue-900 to-amber-900 rounded-2xl overflow-hidden shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-0">
-              <div className="p-8 lg:p-12 text-white flex flex-col justify-center">
+              <div className="p-6 lg:p-10 text-white flex flex-col justify-center">
                 <div className="mb-4">
                   <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
                     {blogPosts[0].category}
@@ -199,9 +199,9 @@ const Blog = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-16"
+          className="mt-12"
         >
-          <div className="bg-gray-50 rounded-2xl p-8 text-center">
+          <div className="bg-gray-50 rounded-2xl p-6 text-center">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Stay Updated
             </h3>
@@ -209,7 +209,7 @@ const Blog = () => {
               Subscribe to receive my latest insights on communication strategy,
               media trends, and professional development directly in your inbox.
             </p>
-            <form className="max-w-md mx-auto flex gap-4">
+            <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
                 placeholder="Enter your email"

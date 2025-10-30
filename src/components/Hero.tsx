@@ -21,60 +21,50 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-gray-900">
                 Zewotir Desalegn Alemu
 
                <span className="text-amber-300 text-5xl"> aka Zik</span>
               </h1>
-              <p className="text-xl sm:text-2xl lg:text-3xl mb-8 font-light text-blue-900">
+              <p className="text-xl sm:text-2xl lg:text-3xl mb-6 font-light text-blue-900">
                 PR Strategist | Media Personality | Voice-Over Artist
               </p>
-              <p className="text-lg sm:text-xl mb-12 leading-relaxed text-gray-700 max-w-xl">
+              <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-700 max-w-xl">
                 Crafting narratives that connect people, purpose, and possibility. 
                 With years of experience in strategic communication and media excellence, 
                 I bring stories to life through authentic and impactful storytelling.
               </p>
               
-              {/* <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4"
-              > */}
-              <div className='flex flex-col sm:flex-row gap-3'>               
+              <div className='flex flex-col sm:flex-row gap-4 mt-8'>               
                 <a
                   href="#about"
-                  className="bg-blue-900 px-8 py-4 hover:bg-blue-800 text-white rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center md:p-10"
+                  className="bg-blue-900 px-8 py-4 hover:bg-blue-800 text-white rounded-lg font-semibold transition-colors duration-300 shadow-lg text-center"
                 >
                   Learn More About Me
                 </a>
                 <a
                   href="#portfolio"
-                  className="border-2 border-transparent hover:p-10 text-blue-900 px-8 py-4 font-semibold transition-all duration-300 text-center"
+                  className="border-2 border-blue-900 text-blue-900 px-8 py-4 font-semibold transition-all duration-300 text-center rounded-lg"
                 >
                   View My Work
                 </a>
                 </div>
-              {/* </motion.div> */}
 
               {/* Professional Highlights */}
               <div
-                // initial={{ opacity: 0, y: 20 }}
-                // animate={{ opacity: 1, y: 0 }}
-                // transition={{ duration: 0.8, delay: 0.6 }}
-                className="grid grid-cols-2 sm:grid-cols-3 gap-6"
+                className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-12"
               >
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-900">15+</div>
-                  <div className="text-sm text-gray-600">Years of Experience</div>
+                  <div className="text-sm text-gray-600 mt-2">Years of Experience</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-900">100+</div>
-                  <div className="text-sm text-gray-600">Projects Completed</div>
+                  <div className="text-sm text-gray-600 mt-2">Projects Completed</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-900">50+</div>
-                  <div className="text-sm text-gray-600">Media Appearances</div>
+                  <div className="text-sm text-gray-600 mt-2">Media Appearances</div>
                 </div>
               </div>
             </motion.div>
@@ -93,7 +83,7 @@ const Hero = () => {
               
               {/* Image Container */}
               <div className="relative bg-white p-4 rounded-3xl shadow-2xl">
-                <div className="aspect-4/5 relative overflow-hidden rounded-2xl">
+                <div className="aspect-[4/5] relative overflow-hidden rounded-2xl">
                   <Image
                     src="/hero-portrait.jpg"
                     alt="Zewotir Desalegn Alemu - Professional Portrait"

@@ -41,17 +41,17 @@ const About = () => {
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               About Me
             </h2>
-            <div className="prose prose-lg text-gray-700 mb-8">
-              <p className="mb-6">
+            <div className="text-gray-700 mb-8">
+              <p className="mb-4">
                 Welcome to my digital space. I am Zewotir Desalegn Alemu, a passionate communication 
                 professional who believes in the transformative power of storytelling and strategic messaging.
               </p>
-              <p className="mb-6">
+              <p className="mb-4">
                 With years of experience in media, public relations, and voice artistry, I have had the 
                 privilege of working across diverse platforms and with remarkable individuals who have 
                 shaped my understanding of effective communication.
               </p>
-              <p className="mb-6">
+              <p className="mb-4">
                 My approach combines the art of communication with the science of strategy, ensuring 
                 that every narrative I craft resonates authentically with its intended audience while 
                 achieving measurable impact.
@@ -67,7 +67,7 @@ const About = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300"
+              className="inline-flex items-center bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 mt-6"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

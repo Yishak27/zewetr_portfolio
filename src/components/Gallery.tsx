@@ -96,10 +96,10 @@ const Gallery = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Sketch Art Gallery
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
             Beyond my professional work in media and communication, I find creative expression
             through sketching and visual art. Each piece tells a story and reflects my artistic journey.
           </p>
@@ -139,9 +139,9 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 text-center"
         >
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl p-6 shadow-lg max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Art as Expression
             </h3>

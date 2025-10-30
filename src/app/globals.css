@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary-navy: #1e3a8a;
   --accent-gold: #d97706;
@@ -96,6 +100,27 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+
+/* Reset default margins on common elements */
+section, article, div, p, h1, h2, h3, h4, h5, h6, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure consistent spacing for paragraphs */
+p {
+  margin-bottom: 1rem;
+}
+
+/* Consistent spacing for headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+  margin-bottom: 0;
 }
 
 /* Hero specific styles */

@@ -25,13 +25,13 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full pt-10 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full py-6 z-50 transition-all duration-500 ${
       scrolled 
         ? 'bg-white/98 backdrop-blur-md shadow-xl border-b border-gray-100' 
         : 'bg-white/10 backdrop-blur-sm'
     }`}>
       <div className="container-responsive">
-        <div className="flex justify-between items-center py-5 lg:py-6">
+        <div className="flex justify-between items-center py-2 lg:py-3">
           {/* Logo/Brand */}
           <div className="shrink-0">
             <h1 className={`text-2xl lg:text-3xl font-bold transition-all duration-300 ${
@@ -86,7 +86,7 @@ const Navigation = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-3 rounded-lg transition-all duration-300 ${
+              className={`p-2 rounded-lg transition-all duration-300 ${
                 scrolled 
                   ? 'text-gray-700 hover:bg-gray-100' 
                   : 'text-white hover:bg-white/10'
@@ -100,8 +100,8 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="lg:hidden">
-            <div className="px-4 py-6 bg-white/98 backdrop-blur-md rounded-2xl mt-2 mx-2 shadow-2xl border border-gray-100">
-              <div className="space-y-2">
+            <div className="px-4 py-4 bg-white/98 backdrop-blur-md rounded-2xl mt-2 mx-2 shadow-2xl border border-gray-100">
+              <div className="space-y-1">
                 {navItems.map((item) => (
                   <a
                     key={item.href}
@@ -115,7 +115,7 @@ const Navigation = () => {
               </div>
               
               {/* Mobile CTA */}
-              <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="mt-4 pt-4 border-t border-gray-200">
                 <a
                   href="#contact"
                   className="block w-full text-center px-4 py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-300"
