@@ -25,7 +25,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full py-6 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       scrolled 
         ? 'bg-white/98 backdrop-blur-md shadow-xl border-b border-gray-100' 
         : 'bg-white/10 backdrop-blur-sm'

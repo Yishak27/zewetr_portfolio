@@ -52,18 +52,18 @@ const Contact = () => {
     {
       icon: <Linkedin className="w-6 h-6" />,
       label: "LinkedIn",
-      url: "https://linkedin.com/in/zewotir-desalegn"
+      url: "https://www.linkedin.com/in/zewotir-d-alemu-3a0464258/"
     },
     {
       icon: <Instagram className="w-6 h-6" />,
       label: "Instagram",
-      url: "https://instagram.com/zewotir_desalegn"
+      url: "https://www.instagram.com/zikalex1992/"
     },
-    {
-      icon: <Calendar className="w-6 h-6" />,
-      label: "Schedule Meeting",
-      url: "https://calendly.com/zewotir-desalegn"
-    }
+    // {
+    //   icon: <Calendar className="w-6 h-6" />,
+    //   label: "Schedule Meeting",
+    //   url: "https://calendly.com/zewotir-desalegn"
+    // }
   ];
 
   return (
@@ -94,7 +94,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-white rounded-xl p-6 shadow">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Send Me a Message
               </h3>
@@ -176,7 +176,7 @@ const Contact = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 px-12 sm:px-14 rounded-full font-semibold transition-colors duration-300 shadow-lg border-2 border-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                  className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 px-12 sm:px-14 rounded-full font-semibold transition-colors duration-300 shadow border-2 border-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
                 >
                   Send Message
                 </motion.button>
@@ -193,7 +193,7 @@ const Contact = () => {
             className="space-y-6"
           >
             {/* Contact Details */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-white rounded-xl p-6 shadow">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Get in Touch
               </h3>
@@ -226,7 +226,7 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-white rounded-xl p-6 shadow">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Connect Online
               </h3>
@@ -254,7 +254,7 @@ const Contact = () => {
             </div>
 
             {/* Availability */}
-            <div className="bg-gradient-to-br from-blue-900 to-amber-900 rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-br from-blue-900 to-amber-900 rounded-xl p-8 text-white">
               <h3 className="text-2xl font-semibold mb-4">
                 Current Availability
               </h3>
