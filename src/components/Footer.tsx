@@ -88,15 +88,16 @@ const Footer = () => {
 
               {/* Social Links */}
               <div className="flex space-x-4 mt-6">
-                {socialLinks && socialLinks.map((i)=>
-              <a
-                  href={i.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors duration-300"
-                >
-                  {i.icon}
-                </a>     
+                {socialLinks.length > 0 && socialLinks.map((i) =>
+                  <a
+                    key={i.url}
+                    href={i.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors duration-300"
+                  >
+                    {i.icon}
+                  </a>
                 )}
               </div>
             </motion.div>

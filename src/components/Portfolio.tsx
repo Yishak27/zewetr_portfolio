@@ -10,64 +10,37 @@ const Portfolio = () => {
   const categories = [
     { id: 'all', label: 'All Work' },
     { id: 'media', label: 'Media Hosting' },
-    { id: 'voiceover', label: 'Voice-Over' },
-    { id: 'mc', label: 'MC Events' },
+    // { id: 'voiceover', label: 'Voice-Over' },
+    // { id: 'mc', label: 'MC Events' },
     { id: 'pr', label: 'PR Campaigns' }
   ];
 
   const portfolioItems = [
     {
       id: 1,
-      title: "Prime Time News Hosting",
+      title: "ማን ያሸንፋል",
       category: "media",
-      description: "Lead anchor for evening news program, delivering breaking news and conducting high-profile interviews.",
+      description: "ተበላው! ዩክሬንን ካላወቅሽ እኔንም አታውቂኝም",
       image: "/api/placeholder/600/400",
-      videoUrl: "https://youtube.com/watch?v=example1",
+      videoUrl: "https://www.youtube.com/watch?v=vxoTILFKix0",
       type: "video"
     },
     {
-      id: 2,
-      title: "Corporate Brand Campaign",
-      category: "voiceover",
-      description: "Voice-over work for major telecommunications company's national advertising campaign.",
-      image: "/api/placeholder/600/400",
-      audioUrl: "/audio/sample1.mp3",
-      type: "audio"
-    },
-    {
-      id: 3,
-      title: "International Conference MC",
-      category: "mc",
-      description: "Master of ceremonies for three-day international business summit with 500+ attendees.",
-      image: "/api/placeholder/600/400",
-      link: "#",
-      type: "event"
-    },
-    {
-      id: 4,
-      title: "Crisis Communication Strategy",
-      category: "pr",
-      description: "Developed and executed crisis communication plan for major corporation during challenging period.",
-      image: "/api/placeholder/600/400",
-      link: "#",
-      type: "case-study"
-    },
-    {
       id: 5,
-      title: "Documentary Narration",
-      category: "voiceover",
-      description: "Narrated award-winning documentary about Ethiopian cultural heritage and traditions.",
+      title: "ማን ያሸንፋል",
+      category: "media",
+      description: "እኔ ራፕ ሳደርግ ቱፓክ ከሞት ይነሳል ",
       image: "/api/placeholder/600/400",
-      videoUrl: "https://youtube.com/watch?v=example2",
+      videoUrl: "https://www.youtube.com/watch?v=lsurjcL-leo",
       type: "video"
     },
     {
       id: 6,
-      title: "Morning Show Host",
+      title: "ማን ያሸንፋል",
       category: "media",
-      description: "Daily morning television program focusing on lifestyle, culture, and current events.",
+      description: "በጉዲፈቻ አሜሪካ ሄደው ወደ ሀገራቸው የተመለሱት ኢትዮጵያዊያን  ልዩ ፕሮግራም በእንግሊዝኛ",
       image: "/api/placeholder/600/400",
-      videoUrl: "https://youtube.com/watch?v=example3",
+      videoUrl: "https://www.youtube.com/watch?v=f7VKpUrz8Oo",
       type: "video"
     }
   ];
@@ -130,10 +103,20 @@ const Portfolio = () => {
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <div className="relative aspect-video overflow-hidden">
-                <div 
-                  className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
-                  style={{ backgroundImage: `url(${item.image})` }}
-                ></div>
+                {item.type === 'video' && item.videoUrl ? (
+                  <iframe
+                    src={item.videoUrl.replace('watch?v=', 'embed/')}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <div 
+                    className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  ></div>
+                  )}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   {item.type === 'video' && (
                     <a
@@ -150,14 +133,14 @@ const Portfolio = () => {
                       <Play className="w-8 h-8 text-white" />
                     </button>
                   )}
-                  {(item.type === 'event' || item.type === 'case-study') && (
+                  {/* {(item.type === 'event' || item.type === 'case-study') && (
                     <a
                       href={item.link}
                       className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors duration-300"
                     >
                       <ExternalLink className="w-8 h-8 text-white" />
                     </a>
-                  )}
+                  )} */}
                 </div>
               </div>
               
