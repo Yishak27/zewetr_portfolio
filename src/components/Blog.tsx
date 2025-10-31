@@ -1,71 +1,25 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Clock, ArrowRight, X, User, Tag } from 'lucide-react';
+import { blogPosts, BlogPost } from '../data/blogPosts';
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Art of Strategic Communication in Crisis Management",
-      excerpt: "In today's fast-paced digital world, how organizations communicate during challenging times can make or break their reputation. Here's what I've learned from years of crisis communication...",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      category: "PR Strategy",
-      image: "/api/placeholder/600/400",
-      slug: "strategic-communication-crisis-management"
-    },
-    {
-      id: 2,
-      title: "Finding Your Voice: A Guide to Authentic Media Presence",
-      excerpt: "Authenticity in media isn't just about being yourself—it's about being the best version of yourself while staying true to your core values. Let me share some insights...",
-      date: "2024-01-08",
-      readTime: "7 min read",
-      category: "Media",
-      image: "/api/placeholder/600/400",
-      slug: "finding-your-voice-authentic-media-presence"
-    },
-    {
-      id: 3,
-      title: "The Power of Storytelling in Brand Building",
-      excerpt: "Every brand has a story, but not every brand knows how to tell it effectively. The difference between good and great communication often lies in the narrative approach...",
-      date: "2024-01-01",
-      readTime: "6 min read",
-      category: "Branding",
-      image: "/api/placeholder/600/400",
-      slug: "power-of-storytelling-brand-building"
-    },
-    {
-      id: 4,
-      title: "Voice-Over Artistry: More Than Just Reading Scripts",
-      excerpt: "Behind every compelling voice-over is hours of preparation, emotional connection, and technical skill. Here's what goes into creating voices that truly resonate...",
-      date: "2023-12-20",
-      readTime: "4 min read",
-      category: "Voice-Over",
-      image: "/api/placeholder/600/400",
-      slug: "voice-over-artistry-beyond-reading-scripts"
-    },
-    {
-      id: 5,
-      title: "Cultural Sensitivity in Global Communication",
-      excerpt: "As our world becomes increasingly connected, the ability to communicate across cultures isn't just valuable—it's essential. Here are key principles I've learned...",
-      date: "2023-12-10",
-      readTime: "8 min read",
-      category: "Communication",
-      image: "/api/placeholder/600/400",
-      slug: "cultural-sensitivity-global-communication"
-    },
-    {
-      id: 6,
-      title: "The Evolution of Media Hosting in the Digital Age",
-      excerpt: "Traditional media hosting has transformed dramatically with digital platforms. Here's how professionals can adapt and thrive in this new landscape...",
-      date: "2023-12-01",
-      readTime: "6 min read",
-      category: "Media",
-      image: "/api/placeholder/600/400",
-      slug: "evolution-media-hosting-digital-age"
-    }
-  ];
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (post: BlogPost) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPost(null);
+    document.body.style.overflow = 'unset';
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -96,7 +50,7 @@ const Blog = () => {
         </motion.div>
 
         {/* Featured Post */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -123,13 +77,13 @@ const Blog = () => {
                   <Clock size={16} className="mr-2" />
                   <span>{blogPosts[0].readTime}</span>
                 </div>
-                <a
-                  href={`/blog/${blogPosts[0].slug}`}
+                <button
+                  onClick={() => openModal(blogPosts[0])}
                   className="inline-flex lg:text-xsm h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   Read more
                   <ArrowRight size={20} className="ml-2" />
-                </a>
+                </button>
               </div>
               <div className="aspect-video lg:aspect-auto">
                 <div
@@ -139,7 +93,7 @@ const Blog = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -150,14 +104,14 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+              className="bg-white rounded-xl overflow-hidden shadow hover:shadow-2xl transition-all duration-300 group"
             >
-              <div className="aspect-video overflow-hidden">
+              {/* <div className="aspect-video overflow-hidden">
                 <div
                   className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
                   style={{ backgroundImage: `url(${post.image})` }}
                 ></div>
-              </div>
+              </div> */}
 
               <div className="p-6">
                 <div className="mb-3">
@@ -181,13 +135,13 @@ const Blog = () => {
                   <span>{post.readTime}</span>
                 </div>
 
-                <a
-                  href={`/blog/${post.slug}`}
+                <button
+                  onClick={() => openModal(post)}
                   className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
                   Read More
                   <ArrowRight size={16} className="ml-2" />
-                </a>
+                </button>
               </div>
             </motion.article>
           ))}
@@ -225,6 +179,105 @@ const Blog = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Blog Detail Modal */}
+      <AnimatePresence>
+        {isModalOpen && selectedPost && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="relative">
+                <div
+                  className="h-64"
+                  style={{ backgroundColor: "GrayText" }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <button
+                    onClick={closeModal}
+                    className="absolute bg-blue top-4 right-4 rounded-full p-2 text-white hover:bg-white/30 transition-colors duration-200"
+                  >
+                    <X size={24} />
+                  </button>
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium mb-3 inline-block">
+                      {selectedPost.category}
+                    </span>
+                    <h2 className="text-3xl font-bold text-white mb-2">
+                      {selectedPost.title}
+                    </h2>
+                    <div className="flex items-center text-white/90 text-sm">
+                      <Calendar size={16} className="mr-2" />
+                      <span className="mr-4">{formatDate(selectedPost.date)}</span>
+                      <Clock size={16} className="mr-2" />
+                      <span>{selectedPost.readTime}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 max-h-[calc(90vh-16rem)] overflow-y-auto">
+                {/* Author Info */}
+                <div className="flex items-center mb-6 pb-6 border-b border-gray-200">
+                  <div
+                    className="w-12 h-12 rounded-full bg-cover bg-center mr-4"
+                    style={{ backgroundImage: `url(${selectedPost.author.image})` }}
+                  />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{selectedPost.author.name}</h3>
+                    <p className="text-gray-600 text-sm">{selectedPost.author.bio}</p>
+                  </div>
+                </div>
+
+                {/* Article Content */}
+                <div 
+                  className="prose prose-lg max-w-none mb-6"
+                  dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                />
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedPost.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                    >
+                      <Tag size={14} className="mr-1" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Modal Footer */}
+                <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+                  <div className="text-sm text-gray-500">
+                    Published on {formatDate(selectedPost.date)}
+                  </div>
+                  <button
+                    onClick={closeModal}
+                    className="inline-flex h-10 items-center justify-center bg-blue-900 px-6 text-white rounded-full font-semibold transition-colors duration-300 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

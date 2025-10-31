@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-01-15",
     readTime: "5 min read",
     category: "PR Strategy",
-    image: "/api/placeholder/600/400",
+    image: "https://www.youtube.com/watch?v=vxoTILFKix0",
     slug: "strategic-communication-crisis-management",
     author: {
       name: "Zewotir Desalegn Alemu",

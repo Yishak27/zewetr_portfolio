@@ -73,7 +73,7 @@ const Gallery = () => {
             Personal Projects
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
-            Beyond professional communication, I explore creative expression through visual art. 
+            Beyond professional communication, I explore creative expression through visual art.
             These personal projects reflect my artistic journey and cultural heritage.
           </p>
         </motion.div>
@@ -88,7 +88,7 @@ const Gallery = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               // viewport={{ once: true }}
               className="group cursor-pointer"
-              // onClick={() => openLightbox(index)}
+            // onClick={() => openLightbox(index)}
             >
               <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
                 <div

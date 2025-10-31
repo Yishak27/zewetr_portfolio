@@ -18,7 +18,7 @@ const Navigation = () => {
   const navItems = [
     { href: '/#home', label: 'Home' },
     { href: '/#about', label: 'About' },
-    { href: '/#services', label: 'Services' },
+    // { href: '/#services', label: 'Services' },
     { href: '/#portfolio', label: 'Portfolio' },
     { href: '/#gallery', label: 'Gallery' },
     { href: '/#blog', label: 'Blog' },
@@ -26,7 +26,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-80 sm:w-full z-50 transition-all duration-500 ${
       // scrolled 
         // ? 
         'bg-dark/98 backdrop-blur-md shadow border-b border-gray-200' 
