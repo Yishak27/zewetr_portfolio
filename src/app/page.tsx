@@ -17,7 +17,7 @@ export default function Home() {
       <About />
       <Portfolio />
       <Testimonials />
-      <LeadMagnet />
+      {/* <LeadMagnet /> */}
       <Gallery />
       <Blog />
       <Contact />

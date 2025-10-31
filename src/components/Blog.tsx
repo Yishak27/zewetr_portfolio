@@ -125,9 +125,9 @@ const Blog = () => {
                 </div>
                 <a
                   href={`/blog/${blogPosts[0].slug}`}
-                  className="inline-flex h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
+                  className="inline-flex lg:text-xsm h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
                 >
-                  Read Full Article
+                  Read more
                   <ArrowRight size={20} className="ml-2" />
                 </a>
               </div>

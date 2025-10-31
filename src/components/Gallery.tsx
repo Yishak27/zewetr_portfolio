@@ -37,34 +37,6 @@ const Gallery = () => {
       image: "/api/placeholder/600/400",
       category: "abstract"
     },
-    {
-      id: 5,
-      title: "Nature Study",
-      description: "Botanical illustration in fine detail",
-      image: "/api/placeholder/400/500",
-      category: "nature"
-    },
-    {
-      id: 6,
-      title: "Character Design",
-      description: "Creative character concepts and development",
-      image: "/api/placeholder/500/600",
-      category: "characters"
-    },
-    {
-      id: 7,
-      title: "Architectural Sketch",
-      description: "Historic building study with perspective focus",
-      image: "/api/placeholder/600/400",
-      category: "architecture"
-    },
-    {
-      id: 8,
-      title: "Emotional Portrait",
-      description: "Capturing human emotion through artistic expression",
-      image: "/api/placeholder/400/500",
-      category: "portraits"
-    }
   ];
 
   const openLightbox = (index: number) => {

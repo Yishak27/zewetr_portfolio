@@ -31,14 +31,14 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       label: "Email",
-      value: "zewotir@example.com",
-      link: "mailto:zewotir@example.com"
+      value: "zikalex1992@gmail.com",
+      link: "mailto:zikalex1992@gmail.com"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       label: "Phone",
-      value: "+251 911 123 456",
-      link: "tel:+251911123456"
+      value: "+251 920 200 452",
+      link: "tel:+251 920 200 452"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
@@ -229,11 +229,13 @@ const Contact = () => {
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-900 rounded-lg flex items-center justify-center mr-4">
                       {info.icon}
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-500">{info.label}</p>
+                    <div className='gap-1 mb-0 pb-0'>
+                      {/* <p className="text-sm font-medium text-gray-500">{info.label}</p> */}
+                      {info.label}
+                       <br/>
                       <a
                         href={info.link}
-                        className="text-gray-900 hover:text-blue-900 transition-colors duration-300"
+                        className="text-black hover:text-blue-900 transition-colors duration-300"
                       >
                         {info.value}
                       </a>

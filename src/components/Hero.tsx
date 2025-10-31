@@ -85,7 +85,7 @@ const Hero = () => {
               <div className="relative bg-white p-4 rounded-3xl shadow-2xl">
                 <div className="aspect-[4/5] relative overflow-hidden rounded-2xl">
                   <Image
-                    src="/hero-portrait.jpg"
+                    src="/logos/leag.png"
                     alt="Zewotir Desalegn Alemu - Professional Portrait"
                     fill
                     className="object-cover"
