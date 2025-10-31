@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zewotir Desalegn Alemu - Professional Portfolio
+
+A modern, responsive portfolio website for Zewotir Desalegn Alemu (Zik), showcasing expertise in PR strategy, media hosting, voice-over artistry, and professional MC services.
+
+## ✨ Recent Enhancements
+
+### Professional Brand Strengthening
+- **Enhanced Hero Section**: More powerful, brand-aligned messaging emphasizing bilingual expertise and international availability
+- **Narrative About Section**: Personal story-driven content that connects with audiences
+- **Dedicated Services Page**: Comprehensive service offerings with clear deliverables and pricing
+- **Client Testimonials**: Social proof with rotating testimonial slider and client logos
+- **Lead Magnet**: Strategic communication guide download with email capture
+
+### Trust-Building Elements
+- **Testimonials Component**: Real client success stories with ratings and company information
+- **Client Logos Section**: Visual credibility indicators from trusted organizations
+- **FAQ Section**: Addresses common client questions and concerns
+- **Booking Integration**: Direct scheduling link for easier client access
+
+### Service Enhancement
+- **Four Core Services**: Media Hosting, Voice-Over, MC Services, PR Strategy
+- **Clear Deliverables**: What clients receive with each service
+- **Transparent Pricing**: "Starting from" pricing with downloadable rate card
+- **Demo Placeholders**: Ready for voice-over reels and video samples
+
+### User Experience Improvements
+- **Mobile-First Design**: Optimized for all device sizes
+- **Improved Navigation**: Added Services page link
+- **Lead Generation**: Email capture with valuable content offer
+- **Professional Positioning**: Repositioned art gallery as "Personal Projects"
+
+This is a [Next.js](https://nextjs.org) project built with modern web technologies.
 
 ## Getting Started
 

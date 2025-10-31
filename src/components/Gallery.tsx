@@ -98,11 +98,11 @@ const Gallery = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl text-center lg:text-5xl font-bold text-gray-900 mb-4">
-            Sketch Art Gallery
+            Personal Projects
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
-            Beyond my professional work in media and communication, I find creative expression
-            through sketching and visual art. Each piece tells a story and reflects my artistic journey.
+            Beyond professional communication, I explore creative expression through visual art. 
+            These personal projects reflect my artistic journey and cultural heritage.
           </p>
         </motion.div>
 

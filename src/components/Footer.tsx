@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUp } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUp, Calendar, YoutubeIcon, Link } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -26,6 +26,27 @@ const Footer = () => {
     'Brand Storytelling'
   ];
 
+  const socialLinks = [
+    {
+      icon: <Linkedin className="w-6 h-6" />,
+      label: "LinkedIn",
+      url: "https://www.linkedin.com/in/zewotir-d-alemu-3a0464258/"
+    },
+    {
+      icon: <Instagram className="w-6 h-6" />,
+      label: "Instagram",
+      url: "https://www.instagram.com/zikalex1992/"
+    },
+    {
+      icon: <Calendar className="w-6 h-6" />,
+      label: "Schedule Meeting",
+      url: "https://calendly.com/zewotir-desalegn"
+    },{
+      icon: <YoutubeIcon className='w-6 h-6'/>,
+      label: "Youtube",
+      url:"https://www.youtube.com/@ZewotirDAlemu"
+    }
+  ];
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container-responsive">
@@ -67,22 +88,16 @@ const Footer = () => {
 
               {/* Social Links */}
               <div className="flex space-x-4 mt-6">
-                <a
-                  href="https://linkedin.com/in/zewotir-desalegn"
+                {socialLinks && socialLinks.map((i)=>
+              <a
+                  href={i.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors duration-300"
                 >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="https://instagram.com/zewotir_desalegn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors duration-300"
-                >
-                  <Instagram size={20} />
-                </a>
+                  {i.icon}
+                </a>     
+                )}
               </div>
             </motion.div>
 
@@ -149,27 +164,22 @@ const Footer = () => {
               viewport={{ once: true }}
               className="flex items-center space-x-6"
             >
-              <a
-                href="/privacy-policy"
-                className="text-gray-400 hover:text-amber-400 text-sm transition-colors duration-300"
+              <span
+                className="text-gray-400 text-sm mb-4 md:mb-0"
               >
-                Privacy Policy
-              </a>
-              <a
-                href="/terms-of-service"
-                className="text-gray-400 hover:text-amber-400 text-sm transition-colors duration-300"
-              >
-                Terms of Service
-              </a>
-              
-              {/* Back to Top Button */}
-              <button
+                Developed by {""}
+                <a href='https://ermiyas.dev'
+                  className="text-white underline text-sm mb-4 pointer"
+                  target='_blank' >Ermiyas
+                  </a>
+              </span>
+              {/* <button
                 onClick={scrollToTop}
                 className="w-10 h-10 bg-gray-800 hover:bg-amber-600 rounded-lg flex items-center justify-center transition-colors duration-300 group"
                 aria-label="Back to top"
               >
                 <ArrowUp size={20} className="group-hover:transform group-hover:-translate-y-1 transition-transform duration-300" />
-              </button>
+              </button> */}
             </motion.div>
           </div>
         </div>

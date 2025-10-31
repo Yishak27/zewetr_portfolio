@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Instagram, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Calendar, Youtube, YoutubeIcon } from 'lucide-react';
 import { useState } from 'react';
 
 const Contact = () => {
@@ -59,11 +59,15 @@ const Contact = () => {
       label: "Instagram",
       url: "https://www.instagram.com/zikalex1992/"
     },
-    // {
-    //   icon: <Calendar className="w-6 h-6" />,
-    //   label: "Schedule Meeting",
-    //   url: "https://calendly.com/zewotir-desalegn"
-    // }
+    {
+      icon: <Calendar className="w-6 h-6" />,
+      label: "Schedule Meeting",
+      url: "https://calendly.com/zewotir-desalegn"
+    },{
+      icon: <YoutubeIcon className='w-6 h-6'/>,
+      label: "Youtube",
+      url:"https://www.youtube.com/@ZewotirDAlemu"
+    }
   ];
 
   return (
@@ -182,6 +186,20 @@ const Contact = () => {
                 </motion.button>
               </form>
             </div>
+            
+            <div className="bg-gradient-to-br mt-4 from-blue-900 to-amber-900 rounded-xl p-8 text-white">
+              <h3 className="text-2xl font-semibold mb-4">
+                Current Availability
+              </h3>
+              <p className="text-white/90 mb-4">
+                I'm currently accepting new projects and collaborations. 
+                Response time is typically within 24-48 hours.
+              </p>
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-green-400 rounded-full mr-3"></div>
+                <span className="font-medium">Available for new projects</span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Contact Information */}
@@ -244,7 +262,7 @@ const Contact = () => {
                     viewport={{ once: true }}
                     className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition-all duration-300 group"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 text-gray-600 group-hover:text-blue-900 mr-4 transition-colors duration-300">
+                    <div className="flex-shrink-0 w-6 h-6 text-gray-600 group-hover:text-blue-900 mr-4 transition-colors duration-300">
                       {social.icon}
                     </div>
                     <span className="font-medium">{social.label}</span>
@@ -253,20 +271,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Availability */}
-            <div className="bg-gradient-to-br from-blue-900 to-amber-900 rounded-xl p-8 text-white">
-              <h3 className="text-2xl font-semibold mb-4">
-                Current Availability
-              </h3>
-              <p className="text-white/90 mb-4">
-                I'm currently accepting new projects and collaborations. 
-                Response time is typically within 24-48 hours.
-              </p>
-              <div className="flex items-center">
-                <div className="w-3 h-3 bg-green-400 rounded-full mr-3"></div>
-                <span className="font-medium">Available for new projects</span>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

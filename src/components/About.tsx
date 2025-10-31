@@ -29,37 +29,40 @@ const About = () => {
 
   return (
     <section id="about" className="section-container bg-gray-50">
-      <div className="container-responsive">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container-responsive w-50">
+        <div className="text-center grid w-30 items-center">
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            // initial={{ opacity: 0, x: -50 }}
+            // whileInView={{ opacity: 1, x: 0 }}
+            // transition={{ duration: 0.8 }}
+            // viewport={{ once: true }}
+            
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               About Me
             </h2>
             <div className="text-gray-700 mb-8">
               <p className="mb-4">
-                Welcome to my digital space. I am Zewotir Desalegn Alemu, a passionate communication 
-                professional who believes in the transformative power of storytelling and strategic messaging.
+                My journey began with a simple belief: every story deserves to be told with authenticity and impact. 
+                Growing up in Ethiopia's rich cultural landscape, I discovered early that communication transcends 
+                language—it's about connecting hearts and minds across any divide.
               </p>
               <p className="mb-4">
-                With years of experience in media, public relations, and voice artistry, I have had the 
-                privilege of working across diverse platforms and with remarkable individuals who have 
-                shaped my understanding of effective communication.
+                Over 15 years in media and strategic communication have taught me that the most powerful messages 
+                aren't just heard—they're felt. From anchoring prime-time news to developing crisis communication 
+                strategies for international brands, I've learned that authenticity is the foundation of all 
+                meaningful communication.
               </p>
               <p className="mb-4">
-                My approach combines the art of communication with the science of strategy, ensuring 
-                that every narrative I craft resonates authentically with its intended audience while 
-                achieving measurable impact.
+                What sets me apart is my bilingual expertise in English and Amharic, combined with deep cultural 
+                intelligence that helps brands navigate global markets while staying true to their core values. 
+                I don't just deliver messages—I craft experiences that resonate across cultures.
               </p>
               <p>
-                Whether I`m hosting a television program, developing a PR campaign, or lending my voice 
-                to bring a script to life, my mission remains constant: to connect people, purpose, and 
-                possibility through the power of compelling communication.
+                Today, I'm passionate about helping organizations and individuals find their authentic voice in 
+                an increasingly connected world. Whether through strategic PR, compelling voice-over work, or 
+                dynamic event hosting, my mission is to transform complex ideas into stories that inspire action.
               </p>
             </div>
             
@@ -77,7 +80,7 @@ const About = () => {
           </motion.div>
 
           {/* Image */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -85,10 +88,9 @@ const About = () => {
             className="relative"
           >
             <div className="aspect-[4/5] bg-gradient-to-br from-blue-900 to-amber-900 rounded-2xl overflow-hidden shadow-2xl">
-              {/* Placeholder for professional photo */}
               <div className="w-full h-full bg-[url('/api/placeholder/400/500')] bg-cover bg-center"></div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Achievements Grid */}

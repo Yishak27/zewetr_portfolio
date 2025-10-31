@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen mt-2 md:mt-4 flex items-center overflow-hidden pt-28 pb-12 sm:pb-16">
+    <section id="home" className="relative min-h-screen mt-2 md:mt-4 flex items-center overflow-hidden pt-10 pb-12 sm:pb-16">
       <div className="container-responsive w-full">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-screen">
           {/* Text Content - Left Side */}
@@ -24,18 +24,18 @@ const Hero = () => {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-gray-900">
                 Zewotir Desalegn Alemu
 
-               <span className="text-amber-300 text-5xl"> aka Zik</span>
+                <span className="text-amber-300 text-5xl"> aka Zik</span>
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl mb-6 font-light text-blue-900">
                 PR Strategist | Media Personality | Voice-Over Artist
               </p>
               <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-700 max-w-xl">
-                Crafting narratives that connect people, purpose, and possibility. 
-                With years of experience in strategic communication and media excellence, 
-                I bring stories to life through authentic and impactful storytelling.
+                Transforming complex messages into compelling narratives that drive action.
+                Specializing in bilingual communication (English & Amharic) for global audiences,
+                I deliver strategic storytelling that builds brands and bridges cultures.
               </p>
-              
-              <div className='flex flex-col sm:flex-row items-center gap-5 sm:gap-9 mt-8'>               
+
+              <div className='flex flex-col sm:flex-row items-center gap-5 sm:gap-9 mt-8'>
                 <a
                   href="#about"
                   className='inline-flex h-12 w-1/3 items-center text-sm justify-center bg-blue-900 px-16 sm:px-14 text-white rounded-full font-semibold transition-colors duration-300 shadow-lg text-center border-2 border-blue-900 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap'
@@ -48,7 +48,7 @@ const Hero = () => {
                 >
                   View My Work
                 </a>
-                </div>
+              </div>
 
               {/* Professional Highlights */}
               <div
@@ -80,7 +80,7 @@ const Hero = () => {
             <div className="relative">
               {/* Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-3xl transform rotate-3"></div>
-              
+
               {/* Image Container */}
               <div className="relative bg-white p-4 rounded-3xl shadow-2xl">
                 <div className="aspect-[4/5] relative overflow-hidden rounded-2xl">
