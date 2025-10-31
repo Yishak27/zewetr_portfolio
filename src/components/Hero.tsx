@@ -29,10 +29,13 @@ const Hero = () => {
               <p className="text-xl sm:text-2xl lg:text-3xl mb-6 font-light text-blue-900">
                 PR Strategist | Media Personality | Voice-Over Artist
               </p>
-              <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-700 max-w-xl">
-                Transforming complex messages into compelling narratives that drive action.
-                Specializing in bilingual communication (English & Amharic) for global audiences,
-                I deliver strategic storytelling that builds brands and bridges cultures.
+              <p className="text-lg sm:text-sxl mb-8 leading-relaxed text-gray-700 max-w-xl">
+                Seasoned media professional, strategic communicator, and charismatic presenter with over a
+                decade of experience across radio, television, corporate communications, and live event hosting.
+                Recognized for eloquence, professionalism, and cultural adaptability, with a proven track record
+                in media strategy, public relations, and stakeholder engagement. Currently serving as
+                Director of Event Production & Media Strategy at Nordic Trading PLC while hosting programs
+                on EBS TV.
               </p>
 
               <div className='flex flex-col sm:flex-row items-center gap-5 sm:gap-9 mt-8'>

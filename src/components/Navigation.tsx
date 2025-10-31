@@ -16,20 +16,20 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '/services', label: 'Services' },
-    { href: '#portfolio', label: 'Portfolio' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#blog', label: 'Blog' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/#home', label: 'Home' },
+    { href: '/#about', label: 'About' },
+    { href: '/#services', label: 'Services' },
+    { href: '/#portfolio', label: 'Portfolio' },
+    { href: '/#gallery', label: 'Gallery' },
+    { href: '/#blog', label: 'Blog' },
+    { href: '/#contact', label: 'Contact' },
   ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       // scrolled 
         // ? 
-        'bg-dark/98 backdrop-blur-md shadow-xl border-b border-gray-100' 
+        'bg-dark/98 backdrop-blur-md shadow border-b border-gray-200' 
         // :
         //  'bg-white/10 backdrop-blur-sm'
     }`}>
