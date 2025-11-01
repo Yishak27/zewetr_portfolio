@@ -43,7 +43,8 @@ const Portfolio = () => {
   const filteredItems = activeCategory === 'all' 
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === activeCategory);
-
+  console.log('filteredItems',filteredItems);
+  
   return (
     <section id="portfolio" className="section-container bg-white">
       <div className="container-responsive">
@@ -98,9 +99,10 @@ const Portfolio = () => {
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <div className="relative aspect-video overflow-hidden">
-                {item.type === 'video' && item.videoUrl ? (
+                {}                
+                {item.type === 'video' && item.video_url ? (
                   <iframe
-                    src={item.videoUrl.replace('watch?v=', 'embed/')}
+                    src={item.video_url.replace('watch?v=', 'embed/')}
                     className="w-full h-full"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -115,7 +117,7 @@ const Portfolio = () => {
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   {item.type === 'video' && (
                     <a
-                      href={item.videoUrl}
+                      href={item.video_url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors duration-300"
@@ -127,15 +129,7 @@ const Portfolio = () => {
                     <button className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors duration-300">
                       <Play className="w-8 h-8 text-white" />
                     </button>
-                  )}
-                  {/* {(item.type === 'event' || item.type === 'case-study') && (
-                    <a
-                      href={item.link}
-                      className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors duration-300"
-                    >
-                      <ExternalLink className="w-8 h-8 text-white" />
-                    </a>
-                  )} */}
+                  )}                 
                 </div>
               </div>
               

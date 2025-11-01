@@ -1,6 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import db from '../../../../lib/database';
 
+export async function GET() {
+  try {
+    const posts = db.prepare(`
+      SELECT 
+        bp.*,
+        GROUP_CONCAT(bt.tag) as tags
+      FROM blog_posts bp
+      LEFT JOIN blog_tags bt ON bp.id = bt.blog_post_id
+      GROUP BY bp.id
+      ORDER BY bp.created_at DESC
+    `).all();
+
+    // Parse tags for each post
+    const postsWithTags = posts.map((post: any) => ({
+      ...post,
+      tags: post.tags ? post.tags.split(',') : []
+    }));
+
+    return NextResponse.json(postsWithTags);
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    return NextResponse.json({ error: 'Failed to fetch blog posts' }, { status: 500 });
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();

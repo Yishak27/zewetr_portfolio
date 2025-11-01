@@ -25,6 +25,11 @@ const Navigation = () => {
     { href: '/#contact', label: 'Contact' },
   ];
 
+  const showAdmin = false; 
+  if (showAdmin) {
+    navItems.push({ href: '/admin-panel', label: 'Admin' });
+  }
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       // scrolled 

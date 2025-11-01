@@ -1,14 +1,140 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useBlogPosts, useGallery, useTestimonials, usePortfolio } from '../../hooks/useApi';
+import BlogForm from '../../components/admin/BlogForm';
+import GalleryForm from '../../components/admin/GalleryForm';
+import TestimonialForm from '../../components/admin/TestimonialForm';
+import PortfolioForm from '../../components/admin/PortfolioForm';
+import DashboardStats from '../../components/admin/DashboardStats';
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('blog');
-  const { data: blogPosts, loading: blogLoading } = useBlogPosts();
-  const { data: gallery, loading: galleryLoading } = useGallery();
-  const { data: testimonials, loading: testimonialsLoading } = useTestimonials();
-  const { data: portfolio, loading: portfolioLoading } = usePortfolio();
+  const [showForm, setShowForm] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+  
+  const { data: blogPosts, loading: blogLoading, refetch: refetchBlog } = useBlogPosts();
+  const { data: gallery, loading: galleryLoading, refetch: refetchGallery } = useGallery();
+  const { data: testimonials, loading: testimonialsLoading, refetch: refetchTestimonials } = useTestimonials();
+  const { data: portfolio, loading: portfolioLoading, refetch: refetchPortfolio } = usePortfolio();
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    try {
+      const response = await fetch('/api/auth/me');
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data.user);
+      } else {
+        router.push('/admin/login');
+      }
+    } catch (error) {
+      router.push('/admin/login');
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/admin/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
+  const handleDelete = async (id: number, type: string) => {
+    if (!confirm('Are you sure you want to delete this item?')) return;
+    
+    try {
+      const response = await fetch(`/api/admin/${type}?id=${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        // Refetch data based on type
+        switch (type) {
+          case 'blog':
+            refetchBlog();
+            break;
+          case 'gallery':
+            refetchGallery();
+            break;
+          case 'testimonials':
+            refetchTestimonials();
+            break;
+          case 'portfolio':
+            refetchPortfolio();
+            break;
+        }
+      } else {
+        alert('Failed to delete item');
+      }
+    } catch (error) {
+      console.error('Delete error:', error);
+      alert('Failed to delete item');
+    }
+  };
+
+  const handleEdit = (item: any) => {
+    setEditingItem(item);
+    setShowForm(true);
+  };
+
+  const handleAdd = () => {
+    setEditingItem(null);
+    setShowForm(true);
+  };
+
+  const handleFormClose = () => {
+    setShowForm(false);
+    setEditingItem(null);
+  };
+
+  const handleFormSubmit = async (formData: any) => {
+    try {
+      const method = editingItem ? 'PUT' : 'POST';
+      const body = editingItem ? { ...formData, id: editingItem.id } : formData;
+      
+      const response = await fetch(`/api/admin/${activeTab}`, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+      
+      if (response.ok) {
+        handleFormClose();
+        // Refetch data based on active tab
+        switch (activeTab) {
+          case 'blog':
+            refetchBlog();
+            break;
+          case 'gallery':
+            refetchGallery();
+            break;
+          case 'testimonials':
+            refetchTestimonials();
+            break;
+          case 'portfolio':
+            refetchPortfolio();
+            break;
+        }
+      } else {
+        const error = await response.json();
+        alert(error.error || 'Failed to save item');
+      }
+    } catch (error) {
+      console.error('Form submit error:', error);
+      alert('Failed to save item');
+    }
+  };
 
   const tabs = [
     { id: 'blog', label: 'Blog Posts', count: blogPosts?.length || 0 },
@@ -17,6 +143,17 @@ export default function AdminPage() {
     { id: 'portfolio', label: 'Portfolio', count: portfolio?.length || 0 }
   ];
 
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   const renderContent = () => {
     switch (activeTab) {
       case 'blog':
@@ -24,7 +161,10 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Blog Posts</h2>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              <button 
+                onClick={handleAdd}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >
                 Add New Post
               </button>
             </div>
@@ -52,8 +192,18 @@ export default function AdminPage() {
                         </div>
                       </div>
                       <div className="flex space-x-2 ml-4">
-                        <button className="text-blue-600 hover:text-blue-800">Edit</button>
-                        <button className="text-red-600 hover:text-red-800">Delete</button>
+                        <button 
+                          onClick={() => handleEdit(post)}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          Edit
+                        </button>
+                        <button 
+                          onClick={() => handleDelete(post.id, 'blog')}
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -68,7 +218,10 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Gallery Items</h2>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              <button 
+                onClick={handleAdd}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >
                 Add New Item
               </button>
             </div>
@@ -89,8 +242,18 @@ export default function AdminPage() {
                         {item.category}
                       </span>
                       <div className="flex justify-end space-x-2 mt-3">
-                        <button className="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
-                        <button className="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                        <button 
+                          onClick={() => handleEdit(item)}
+                          className="text-blue-600 hover:text-blue-800 text-sm"
+                        >
+                          Edit
+                        </button>
+                        <button 
+                          onClick={() => handleDelete(item.id, 'gallery')}
+                          className="text-red-600 hover:text-red-800 text-sm"
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -105,7 +268,10 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Testimonials</h2>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              <button 
+                onClick={handleAdd}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >
                 Add New Testimonial
               </button>
             </div>
@@ -128,8 +294,18 @@ export default function AdminPage() {
                             <p className="text-blue-600 text-sm">{testimonial.company}</p>
                           </div>
                           <div className="flex space-x-2">
-                            <button className="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
-                            <button className="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                            <button 
+                              onClick={() => handleEdit(testimonial)}
+                              className="text-blue-600 hover:text-blue-800 text-sm"
+                            >
+                              Edit
+                            </button>
+                            <button 
+                              onClick={() => handleDelete(testimonial.id, 'testimonials')}
+                              className="text-red-600 hover:text-red-800 text-sm"
+                            >
+                              Delete
+                            </button>
                           </div>
                         </div>
                         <p className="text-gray-700 mt-2">{testimonial.text}</p>
@@ -152,7 +328,10 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Portfolio Items</h2>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              <button 
+                onClick={handleAdd}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >
                 Add New Item
               </button>
             </div>
@@ -181,8 +360,18 @@ export default function AdminPage() {
                           </div>
                         </div>
                         <div className="flex space-x-2 ml-4">
-                          <button className="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
-                          <button className="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                          <button 
+                            onClick={() => handleEdit(item)}
+                            className="text-blue-600 hover:text-blue-800 text-sm"
+                          >
+                            Edit
+                          </button>
+                          <button 
+                            onClick={() => handleDelete(item.id, 'portfolio')}
+                            className="text-red-600 hover:text-red-800 text-sm"
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -203,32 +392,54 @@ export default function AdminPage() {
       <div className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            <h1 className="text-3xl font-bold text-gray-900">Portfolio Admin</h1>
-            <a 
-              href="/"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              ← Back to Site
-            </a>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Portfolio Admin</h1>
+              {user && (
+                <p className="text-gray-600">Welcome back, {user.username}</p>
+              )}
+            </div>
+            <div className="flex items-center space-x-4">
+              <a 
+                href="/"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                ← Back to Site
+              </a>
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Dashboard Stats */}
+        <DashboardStats
+          blogCount={blogPosts?.length || 0}
+          galleryCount={gallery?.length || 0}
+          testimonialsCount={testimonials?.length || 0}
+          portfolioCount={portfolio?.length || 0}
+        />
+
         {/* Tabs */}
         <div className="border-b border-gray-200 mb-8">
-          <nav className="-mb-px flex space-x-8">
+          <nav className="-mb-px flex flex-wrap gap-2 sm:space-x-8 sm:gap-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                className={`py-2 px-3 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
-                {tab.label}
+                <span className="hidden sm:inline">{tab.label}</span>
+                <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
                 <span className="ml-2 bg-gray-100 text-gray-900 py-0.5 px-2.5 rounded-full text-xs">
                   {tab.count}
                 </span>
@@ -239,6 +450,40 @@ export default function AdminPage() {
 
         {/* Content */}
         {renderContent()}
+
+        {/* Forms */}
+        {showForm && (
+          <>
+            {activeTab === 'blog' && (
+              <BlogForm
+                item={editingItem}
+                onSubmit={handleFormSubmit}
+                onCancel={handleFormClose}
+              />
+            )}
+            {activeTab === 'gallery' && (
+              <GalleryForm
+                item={editingItem}
+                onSubmit={handleFormSubmit}
+                onCancel={handleFormClose}
+              />
+            )}
+            {activeTab === 'testimonials' && (
+              <TestimonialForm
+                item={editingItem}
+                onSubmit={handleFormSubmit}
+                onCancel={handleFormClose}
+              />
+            )}
+            {activeTab === 'portfolio' && (
+              <PortfolioForm
+                item={editingItem}
+                onSubmit={handleFormSubmit}
+                onCancel={handleFormClose}
+              />
+            )}
+          </>
+        )}
       </div>
     </div>
   );

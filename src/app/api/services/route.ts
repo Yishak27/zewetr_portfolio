@@ -3,20 +3,15 @@ import db from '../../../lib/database';
 
 export async function GET() {
   try {
-    const services = db.prepare(`
-      SELECT * FROM services
-      ORDER BY created_at ASC
-    `).all();
-
-    const formattedServices = services.map((service: any) => ({
-      id: service.id,
-      title: service.title,
-      description: service.description,
-      icon: service.icon,
+    const items = db.prepare('SELECT * FROM services ORDER BY created_at DESC').all();
+    
+    // Parse features JSON for each service
+    const servicesWithFeatures = items.map((service: any) => ({
+      ...service,
       features: service.features ? JSON.parse(service.features) : []
     }));
-
-    return NextResponse.json(formattedServices);
+    
+    return NextResponse.json(servicesWithFeatures);
   } catch (error) {
     console.error('Error fetching services:', error);
     return NextResponse.json({ error: 'Failed to fetch services' }, { status: 500 });
