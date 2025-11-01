@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useBlogPosts, useGallery, useTestimonials, usePortfolio } from '../../hooks/useApi';
 import BlogForm from '../../components/admin/BlogForm';
 import GalleryForm from '../../components/admin/GalleryForm';
@@ -12,50 +11,21 @@ import DashboardStats from '../../components/admin/DashboardStats';
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('blog');
   const [showForm, setShowForm] = useState(false);
-  const [editingItem, setEditingItem] = useState(null);
-  const [user, setUser] = useState(null);
-  const router = useRouter();
-  
+  const [editingItem, setEditingItem] = useState<any>(null);
+
   const { data: blogPosts, loading: blogLoading, refetch: refetchBlog } = useBlogPosts();
   const { data: gallery, loading: galleryLoading, refetch: refetchGallery } = useGallery();
   const { data: testimonials, loading: testimonialsLoading, refetch: refetchTestimonials } = useTestimonials();
   const { data: portfolio, loading: portfolioLoading, refetch: refetchPortfolio } = usePortfolio();
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    try {
-      const response = await fetch('/api/auth/me');
-      if (response.ok) {
-        const data = await response.json();
-        setUser(data.user);
-      } else {
-        router.push('/admin/login');
-      }
-    } catch (error) {
-      router.push('/admin/login');
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-      router.push('/admin/login');
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
-
   const handleDelete = async (id: number, type: string) => {
     if (!confirm('Are you sure you want to delete this item?')) return;
-    
+
     try {
       const response = await fetch(`/api/admin/${type}?id=${id}`, {
         method: 'DELETE',
       });
-      
+
       if (response.ok) {
         // Refetch data based on type
         switch (type) {
@@ -100,7 +70,7 @@ export default function AdminPage() {
     try {
       const method = editingItem ? 'PUT' : 'POST';
       const body = editingItem ? { ...formData, id: editingItem.id } : formData;
-      
+
       const response = await fetch(`/api/admin/${activeTab}`, {
         method,
         headers: {
@@ -108,7 +78,7 @@ export default function AdminPage() {
         },
         body: JSON.stringify(body),
       });
-      
+
       if (response.ok) {
         handleFormClose();
         // Refetch data based on active tab
@@ -143,17 +113,6 @@ export default function AdminPage() {
     { id: 'portfolio', label: 'Portfolio', count: portfolio?.length || 0 }
   ];
 
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
   const renderContent = () => {
     switch (activeTab) {
       case 'blog':
@@ -161,7 +120,7 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Blog Posts</h2>
-              <button 
+              <button
                 onClick={handleAdd}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
@@ -192,13 +151,13 @@ export default function AdminPage() {
                         </div>
                       </div>
                       <div className="flex space-x-2 ml-4">
-                        <button 
+                        <button
                           onClick={() => handleEdit(post)}
                           className="text-blue-600 hover:text-blue-800"
                         >
                           Edit
                         </button>
-                        <button 
+                        <button
                           onClick={() => handleDelete(post.id, 'blog')}
                           className="text-red-600 hover:text-red-800"
                         >
@@ -218,7 +177,7 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Gallery Items</h2>
-              <button 
+              <button
                 onClick={handleAdd}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
@@ -231,7 +190,7 @@ export default function AdminPage() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {gallery?.map((item: any) => (
                   <div key={item.id} className="bg-white rounded-lg shadow overflow-hidden">
-                    <div 
+                    <div
                       className="h-48 bg-cover bg-center"
                       style={{ backgroundImage: `url(${item.image})` }}
                     />
@@ -242,13 +201,13 @@ export default function AdminPage() {
                         {item.category}
                       </span>
                       <div className="flex justify-end space-x-2 mt-3">
-                        <button 
+                        <button
                           onClick={() => handleEdit(item)}
                           className="text-blue-600 hover:text-blue-800 text-sm"
                         >
                           Edit
                         </button>
-                        <button 
+                        <button
                           onClick={() => handleDelete(item.id, 'gallery')}
                           className="text-red-600 hover:text-red-800 text-sm"
                         >
@@ -268,7 +227,7 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Testimonials</h2>
-              <button 
+              <button
                 onClick={handleAdd}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
@@ -282,7 +241,7 @@ export default function AdminPage() {
                 {testimonials?.map((testimonial: any) => (
                   <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow border">
                     <div className="flex items-start space-x-4">
-                      <div 
+                      <div
                         className="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0"
                         style={{ backgroundImage: `url(${testimonial.image})` }}
                       />
@@ -294,13 +253,13 @@ export default function AdminPage() {
                             <p className="text-blue-600 text-sm">{testimonial.company}</p>
                           </div>
                           <div className="flex space-x-2">
-                            <button 
+                            <button
                               onClick={() => handleEdit(testimonial)}
                               className="text-blue-600 hover:text-blue-800 text-sm"
                             >
                               Edit
                             </button>
-                            <button 
+                            <button
                               onClick={() => handleDelete(testimonial.id, 'testimonials')}
                               className="text-red-600 hover:text-red-800 text-sm"
                             >
@@ -328,7 +287,7 @@ export default function AdminPage() {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Portfolio Items</h2>
-              <button 
+              <button
                 onClick={handleAdd}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
@@ -341,7 +300,7 @@ export default function AdminPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {portfolio?.map((item: any) => (
                   <div key={item.id} className="bg-white rounded-lg shadow overflow-hidden">
-                    <div 
+                    <div
                       className="h-48 bg-cover bg-center"
                       style={{ backgroundImage: `url(${item.image})` }}
                     />
@@ -360,13 +319,13 @@ export default function AdminPage() {
                           </div>
                         </div>
                         <div className="flex space-x-2 ml-4">
-                          <button 
+                          <button
                             onClick={() => handleEdit(item)}
                             className="text-blue-600 hover:text-blue-800 text-sm"
                           >
                             Edit
                           </button>
-                          <button 
+                          <button
                             onClick={() => handleDelete(item.id, 'portfolio')}
                             className="text-red-600 hover:text-red-800 text-sm"
                           >
@@ -394,23 +353,15 @@ export default function AdminPage() {
           <div className="flex justify-between items-center py-6">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Portfolio Admin</h1>
-              {user && (
-                <p className="text-gray-600">Welcome back, {user.username}</p>
-              )}
+              <p className="text-gray-600">Manage your portfolio content</p>
             </div>
             <div className="flex items-center space-x-4">
-              <a 
+              <a
                 href="/"
                 className="text-blue-600 hover:text-blue-800"
               >
                 ← Back to Site
               </a>
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-              >
-                Logout
-              </button>
             </div>
           </div>
         </div>
@@ -432,11 +383,10 @@ export default function AdminPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-2 px-3 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
-                  activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
+                className={`py-2 px-3 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === tab.id
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  }`}
               >
                 <span className="hidden sm:inline">{tab.label}</span>
                 <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
