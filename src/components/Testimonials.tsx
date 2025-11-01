@@ -4,71 +4,44 @@ import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useTestimonials, useClients } from '../hooks/useApi';
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const { data: testimonials, loading: testimonialsLoading } = useTestimonials();
+  const { data: clientLogos, loading: clientsLoading } = useClients();
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      title: "Marketing Director",
-      company: "Global Tech Solutions",
-      image: "/api/placeholder/80/80",
-      rating: 5,
-      text: "Zewotir's strategic communication expertise transformed our crisis response. Her bilingual capabilities and cultural sensitivity were invaluable for our international campaigns. The results exceeded our expectations."
-    },
-    {
-      id: 2,
-      name: "Dr. Michael Chen",
-      title: "Conference Organizer",
-      company: "International Business Summit",
-      image: "/api/placeholder/80/80",
-      rating: 5,
-      text: "As our MC for three consecutive years, Zewotir brings unmatched professionalism and energy. Her ability to engage diverse audiences and seamlessly manage complex event flows is remarkable."
-    },
-    {
-      id: 3,
-      name: "Amara Tadesse",
-      title: "Creative Director",
-      company: "Ethiopian Broadcasting Corp",
-      image: "/api/placeholder/80/80",
-      rating: 5,
-      text: "Working with Zewotir on our documentary series was exceptional. Her voice-over work in both English and Amharic brought our stories to life with authenticity and emotional depth."
-    },
-    {
-      id: 4,
-      name: "James Rodriguez",
-      title: "CEO",
-      company: "Impact Communications",
-      image: "/api/placeholder/80/80",
-      rating: 5,
-      text: "Zewotir's PR strategy during our product launch was masterful. Her media relationships and strategic thinking resulted in coverage that exceeded our goals by 300%. Highly recommended."
-    },
-    {
-      id: 5,
-      name: "Hanan Mohammed",
-      title: "Event Coordinator",
-      company: "Cultural Heritage Foundation",
-      image: "/api/placeholder/80/80",
-      rating: 5,
-      text: "For our international cultural exchange program, Zewotir's hosting skills were perfect. She connected with audiences across different backgrounds and made everyone feel included."
-    }
-  ];
+  if (testimonialsLoading || clientsLoading) {
+    return (
+      <section className="section-container bg-gray-50">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading testimonials...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  const clientLogos = [
-    { name: "Ethiopian Broadcasting Corporation", logo: "/logos/ebc.png" },
-    { name: "Ethiopian Broadcasting Service", logo: "/logos/ebs.png" },
-    // { name: "Media Partners Network", logo: "/logos/mpn.png" },
-    // { name: "Media Partnerss Network", logo: "/logos/mpn.png" }
-  ];
+  if (!testimonials || !clientLogos) {
+    return (
+      <section className="section-container bg-gray-50">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <p className="text-red-600">Error loading testimonials</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [testimonials.length]);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  //   }, 5000);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   return (
     <section className="section-container bg-gray-50">

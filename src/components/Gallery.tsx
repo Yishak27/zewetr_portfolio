@@ -4,40 +4,36 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useGallery } from '../hooks/useApi';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const { data: artworks, loading, error } = useGallery();
 
-  const artworks = [
-    {
-      id: 1,
-      title: "Portrait Study",
-      description: "A contemplative portrait exploring light and shadow",
-      image: "/vercel.svg",
-      category: "portraits"
-    },
-    {
-      id: 2,
-      title: "Urban Landscape",
-      description: "City life captured in charcoal and graphite",
-      image: "/api/placeholder/500/400",
-      category: "landscapes"
-    },
-    {
-      id: 3,
-      title: "Cultural Heritage",
-      description: "Traditional Ethiopian motifs and patterns",
-      image: "/api/placeholder/400/600",
-      category: "cultural"
-    },
-    {
-      id: 4,
-      title: "Abstract Expression",
-      description: "Emotional interpretation through abstract forms",
-      image: "/api/placeholder/600/400",
-      category: "abstract"
-    },
-  ];
+  if (loading) {
+    return (
+      <section id="gallery" className="section-container bg-gray-50">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading gallery...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !artworks) {
+    return (
+      <section id="gallery" className="section-container bg-gray-50">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <p className="text-red-600">Error loading gallery: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -80,7 +76,7 @@ const Gallery = () => {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {artworks.map((artwork, index) => (
+          {artworks.length > 0 && artworks.map((artwork, index) => (
             <motion.div
               key={artwork.id}
               initial={{ opacity: 0, y: 30 }}

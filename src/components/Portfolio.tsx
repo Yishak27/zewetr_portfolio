@@ -3,47 +3,42 @@
 import { motion } from 'framer-motion';
 import { Play, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
+import { usePortfolio } from '../hooks/useApi';
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  const { data: portfolioItems, loading, error } = usePortfolio();
 
   const categories = [
     { id: 'all', label: 'All Work' },
     { id: 'media', label: 'Media Hosting' },
-    // { id: 'voiceover', label: 'Voice-Over' },
-    // { id: 'mc', label: 'MC Events' },
     { id: 'pr', label: 'PR Campaigns' }
   ];
 
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "ማን ያሸንፋል",
-      category: "media",
-      description: "ተበላው! ዩክሬንን ካላወቅሽ እኔንም አታውቂኝም",
-      image: "/api/placeholder/600/400",
-      videoUrl: "https://www.youtube.com/watch?v=vxoTILFKix0",
-      type: "video"
-    },
-    {
-      id: 5,
-      title: "ማን ያሸንፋል",
-      category: "media",
-      description: "እኔ ራፕ ሳደርግ ቱፓክ ከሞት ይነሳል ",
-      image: "/api/placeholder/600/400",
-      videoUrl: "https://www.youtube.com/watch?v=lsurjcL-leo",
-      type: "video"
-    },
-    {
-      id: 6,
-      title: "ማን ያሸንፋል",
-      category: "media",
-      description: "በጉዲፈቻ አሜሪካ ሄደው ወደ ሀገራቸው የተመለሱት ኢትዮጵያዊያን  ልዩ ፕሮግራም በእንግሊዝኛ",
-      image: "/api/placeholder/600/400",
-      videoUrl: "https://www.youtube.com/watch?v=f7VKpUrz8Oo",
-      type: "video"
-    }
-  ];
+  if (loading) {
+    return (
+      <section id="portfolio" className="section-container bg-white">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading portfolio...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !portfolioItems) {
+    return (
+      <section id="portfolio" className="section-container bg-white">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <p className="text-red-600">Error loading portfolio: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const filteredItems = activeCategory === 'all' 
     ? portfolioItems 

@@ -6,11 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "init-db": "node scripts/seed.mjs"
   },
   "dependencies": {
     "@next/font": "^14.2.15",
+    "@types/better-sqlite3": "^7.6.13",
     "autoprefixer": "^10.0.1",
+    "better-sqlite3": "^12.4.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.548.0",
     "next": "16.0.1",
@@ -18,6 +21,7 @@
     "postcss": "^8.5.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "sqlite3": "^5.1.7",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {

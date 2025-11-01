@@ -26,22 +26,21 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-80 sm:w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       // scrolled 
-        // ? 
-        'bg-dark/98 backdrop-blur-md shadow border-b border-gray-200' 
-        // :
-        //  'bg-white/10 backdrop-blur-sm'
-    }`}>
+      // ? 
+      'bg-dark/98 backdrop-blur-md shadow border-b border-gray-200'
+      // :
+      //  'bg-white/10 backdrop-blur-sm'
+      }`}>
       <div className="container-responsive">
         <div className="flex justify-between items-center py-2 lg:py-3">
           {/* Logo/Brand */}
           <div className="shrink-0">
-            <h1 className={`text-2xl lg:text-3xl font-bold transition-all duration-300 ${
-               'text-gray-900'
-            }`}>
+            <h1 className={`text-2xl lg:text-3xl font-bold transition-all duration-300 ${'text-gray-900'
+              }`}>
               <span className="font-serif">Zewotir </span>
-              
+
             </h1>
           </div>
 
@@ -52,20 +51,18 @@ const Navigation = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative inline-block px-4 py-2 text-base font-medium rounded-lg transition-all duration-300 group ${
-                    'text-gray-700 hover:text-blue-900 hover:bg-blue-50' 
-                      // : 'text-white hover:text-amber-300 hover:bg-white/10'
-                  }`}
+                  className={`relative inline-block px-4 py-2 text-base font-medium rounded-lg transition-all duration-300 group ${'text-gray-700 hover:text-blue-900 hover:bg-blue-50'
+                    // : 'text-white hover:text-amber-300 hover:bg-white/10'
+                    }`}
                 >
                   {item.label}
-                  <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 transition-all duration-300 group-hover:w-3/4 ${
-                    scrolled ? 'bg-blue-900' : 'bg-amber-300'
-                  }`}></span>
+                  <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 transition-all duration-300 group-hover:w-3/4 ${scrolled ? 'bg-blue-900' : 'bg-amber-300'
+                    }`}></span>
                 </a>
               ))}
             </div>
           </div>
-{/* 
+          {/* 
           <div className="hidden p-10 lg:block">
             <a
               href="#contact"
@@ -85,11 +82,11 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-lg transition-all duration-300 ${
                 // scrolled 
-                  // ?
-                   'text-gray-700 hover:bg-gray-100' 
-                  // :
-                  //  'text-white hover:bg-white/10'
-              }`}
+                // ?
+                'text-gray-700 hover:bg-gray-100'
+                // :
+                //  'text-white hover:bg-white/10'
+                }`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -112,7 +109,7 @@ const Navigation = () => {
                   </a>
                 ))}
               </div>
-              
+
               {/* Mobile CTA */}
               <div className="mt-4 pt-4 border-t border-gray-200">
                 <a

@@ -2,12 +2,33 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, X, User, Tag } from 'lucide-react';
-import { blogPosts, BlogPost } from '../data/blogPosts';
+import { Calendar, Clock, ArrowRight, X, Tag } from 'lucide-react';
+import { useBlogPosts } from '../hooks/useApi';
+
+interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  readTime: string;
+  category: string;
+  image: string;
+  slug: string;
+  author: {
+    name: string;
+    image: string;
+    bio: string;
+  };
+  tags: string[];
+}
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data: blogPosts, loading, error } = useBlogPosts();
+  
+  console.log('blogs', blogPosts);
 
   const openModal = (post: BlogPost) => {
     setSelectedPost(post);
@@ -20,6 +41,31 @@ const Blog = () => {
     setSelectedPost(null);
     document.body.style.overflow = 'unset';
   };
+
+  if (loading) {
+    return (
+      <section id="blog" className="section-container bg-white">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading blog posts...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !blogPosts) {
+    return (
+      <section id="blog" className="section-container bg-white">
+        <div className="container-responsive">
+          <div className="text-center py-16">
+            <p className="text-red-600">Error loading blog posts: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -48,71 +94,17 @@ const Blog = () => {
             of public relations and storytelling.
           </p>
         </motion.div>
-
-        {/* Featured Post */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <div className="bg-gradient-to-r from-blue-900 to-amber-900 rounded-2xl overflow-hidden shadow-2xl">
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="p-6 lg:p-10 text-white flex flex-col justify-center">
-                <div className="mb-4">
-                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {blogPosts[0].category}
-                  </span>
-                </div>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-4">
-                  {blogPosts[0].title}
-                </h3>
-                <p className="text-lg mb-6 text-white/90">
-                  {blogPosts[0].excerpt}
-                </p>
-                <div className="flex items-center text-white/80 mb-6">
-                  <Calendar size={16} className="mr-2" />
-                  <span className="mr-4">{formatDate(blogPosts[0].date)}</span>
-                  <Clock size={16} className="mr-2" />
-                  <span>{blogPosts[0].readTime}</span>
-                </div>
-                <button
-                  onClick={() => openModal(blogPosts[0])}
-                  className="inline-flex lg:text-xsm h-12 w-1/3 items-center justify-center border-2 border-blue-900 text-blue-900 px-12 sm:px-14 font-semibold transition-all duration-300 text-center rounded-full bg-white hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 whitespace-nowrap"
-                >
-                  Read more
-                  <ArrowRight size={20} className="ml-2" />
-                </button>
-              </div>
-              <div className="aspect-video lg:aspect-auto">
-                <div
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${blogPosts[0].image})` }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        </motion.div> */}
-
-        {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.slice(1).map((post, index) => (
-            <motion.article
+          {blogPosts.length > 0 && blogPosts.map((post, index) => (
+            // <motion.article
+            <div
               key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              // initial={{ opacity: 0, y: 30 }}
+              // whileInView={{ opacity: 1, y: 0 }}
+              // transition={{ duration: 0.6, delay: index * 0.1 }}
+              // viewport={{ once: true }}
               className="bg-white rounded-xl overflow-hidden shadow hover:shadow-2xl transition-all duration-300 group"
             >
-              {/* <div className="aspect-video overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
-                  style={{ backgroundImage: `url(${post.image})` }}
-                ></div>
-              </div> */}
-
               <div className="p-6">
                 <div className="mb-3">
                   <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-sm font-medium">
@@ -143,7 +135,8 @@ const Blog = () => {
                   <ArrowRight size={16} className="ml-2" />
                 </button>
               </div>
-            </motion.article>
+              {/* </motion.article> */}
+            </div>
           ))}
         </div>
 
